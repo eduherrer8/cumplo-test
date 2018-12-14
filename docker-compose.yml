@@ -41,3 +41,4 @@ services:
       DEBUG: 'True'
       DATABASE_URL: mysql://root:mypassword@mysql:3306/django-test
       API_TOKEN: ${API_TOKEN:-someToken}
+      SERVER: ${SERVER:-someurl}

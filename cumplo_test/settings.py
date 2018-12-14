@@ -123,6 +123,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 # crispy
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# API information
+
+SERVER = os.environ.get('SERVER')
+API_TOKEN = os.environ.get('API_TOKEN')
+
+# Login and logout redirections
+LOGIN_REDIRECT_URL = '/'

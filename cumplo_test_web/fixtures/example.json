@@ -1,0 +1,82 @@
+{
+  "bmx": {
+    "series": [
+      {
+        "idSerie": "SF60653",
+        "titulo": "Tipo de cambio pesos por dólar E.U.A. Tipo de cambio para solventar obligaciones denominadas en moneda extranjera Fecha de liquidación",
+        "datos": [
+          {
+            "fecha": "01/01/2015",
+            "dato": "14.7348"
+          },
+          {
+            "fecha": "02/01/2015",
+            "dato": "14.7348"
+          },
+          {
+            "fecha": "03/01/2015",
+            "dato": "14.7414"
+          },
+          {
+            "fecha": "04/01/2015",
+            "dato": "14.7414"
+          },
+          {
+            "fecha": "05/01/2015",
+            "dato": "14.7414"
+          },
+          {
+            "fecha": "06/01/2015",
+            "dato": "14.8290"
+          },
+          {
+            "fecha": "07/01/2015",
+            "dato": "14.9469"
+          },
+          {
+            "fecha": "08/01/2015",
+            "dato": "14.8479"
+          }
+        ]
+      },
+      {
+        "idSerie": "SP68257",
+        "titulo": "Valor de UDIS",
+        "datos": [
+          {
+            "fecha": "01/01/2015",
+            "dato": "5.271731"
+          },
+          {
+            "fecha": "02/01/2015",
+            "dato": "5.273094"
+          },
+          {
+            "fecha": "03/01/2015",
+            "dato": "5.274458"
+          },
+          {
+            "fecha": "04/01/2015",
+            "dato": "5.275822"
+          },
+          {
+            "fecha": "05/01/2015",
+            "dato": "5.277187"
+          },
+          {
+            "fecha": "06/01/2015",
+            "dato": "5.278552"
+          },
+          {
+            "fecha": "07/01/2015",
+            "dato": "5.279917"
+          },
+          {
+            "fecha": "08/01/2015",
+            "dato": "5.281283"
+          }
+        ]
+      }
+    ]
+  }
+}

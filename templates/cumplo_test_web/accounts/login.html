@@ -1,6 +1,7 @@
 {% extends 'cumplo_test_web/base.html' %}
 {% block content %}
   <form method="post">
+    {% csrf_token %}
     {{form}}
       <button type="submit" class="btn btn-success">Process</button>
   </form>

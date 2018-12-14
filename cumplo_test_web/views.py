@@ -7,6 +7,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic.edit import FormView
 
 from cumplo_test_web.forms import RangeDates
+from cumplo_test_web.utils import APICalls, AdjustInfo
 
 
 class LandingView(View):
@@ -15,7 +16,7 @@ class LandingView(View):
     """
     def get(self, request):
         """
-        get method definition
+        get user authentication
         """
         if request.user.is_authenticated:
             return HttpResponseRedirect(reverse('web:dashboard'))
@@ -28,5 +29,11 @@ class AskDateRange(FormView):
     template_name = "cumplo_test_web/info.html"
 
     def form_valid(self, form):
+        api = APICalls()
+        data = {}
+        data = api.time_function(
+            form.cleaned_data['date_start'], form.cleaned_data['date_end'])
+        adjust = AdjustInfo(data)
+        data = adjust.extra_info()
         return render(
             self.request, 'cumplo_test_web/results.html', data)

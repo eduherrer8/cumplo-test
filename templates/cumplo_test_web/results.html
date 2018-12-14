@@ -1,5 +1,41 @@
 {% extends 'cumplo_test_web/base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-  {{ asd }}asdasdsa
+
+<div class="container">
+  <div class="row">
+    {% for serie in series %}
+    <div class="col-6">
+      <div class="alert alert-light">
+        <strong>{{serie.titulo}}</strong>
+        <hr>
+        Serie: <span class="badge badge-light badge-primary">{{serie.idSerie}}</span> <br>
+        <i class="fas fa-sort-down"></i> Mínimo: <span class="badge badge-light badge-primary">{{serie.Min}}</span> &nbsp;&nbsp;  <i class="fas fa-sort-up"></i> Máximo: <span class="badge badge-light badge-primary">{{serie.Max}}</span><br>
+        Promedio: <span class="badge badge-light badge-primary">{{serie.average}}</span><br>
+      </div>
+      <table class="table table-striped table-dark">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Dato</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for data in serie.datos %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <th scope="row">{{data.fecha}}</th>
+            <td>{{data.dato}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <div class="row">
+          <img src="https://t3.ftcdn.net/jpg/02/10/20/86/500_F_210208682_Gh3aj9HhxTS85wrWgrJQmR61tNtahJXn.jpg" alt="Graphics">
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
 {% endblock %}
