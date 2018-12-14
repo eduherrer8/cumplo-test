@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +26,10 @@ SECRET_KEY = '6y@ho_!)9#rzn28@#q$68#ys!2!n8)6w=^a(6_&&krn%%o#*x*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    'cumplo-test-ed.herokuapp.com'
+]
 
 
 # Application definition
@@ -74,24 +78,9 @@ WSGI_APPLICATION = 'cumplo_test.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    # }
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('MYSQL_DATABASE'),
-        'USER': os.environ.get('MYSQL_USER'),
-        'PASSWORD': os.environ.get('MYSQL_PASSWORD'),
-        'PORT': '3306',
-        'HOST': 'mysql'
-    }
-    # 'default': {os.getenv("DATABASE_URL")}
-}
-
-# DATABASES['default']['OPTIONS'] = {
-#     'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"}
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
