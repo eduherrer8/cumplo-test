@@ -40,7 +40,4 @@ services:
     environment: &app_env
       DEBUG: 'True'
       DATABASE_URL: mysql://root:mypassword@mysql:3306/django-test
-      MYSQL_ROOT_PASSWORD: mypassword
-      MYSQL_USER: root
-      MYSQL_PASSWORD: mypassword
-      MYSQL_DATABASE: django-test
+      API_TOKEN: ${API_TOKEN:-someToken}
