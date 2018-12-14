@@ -1,0 +1,46 @@
+version: "3.6"
+
+volumes:
+  mysql_data:
+
+networks:
+  backend:
+
+services:
+  mysql:
+    image: mysql:5.7.24
+    volumes:
+    # Mount the data volume
+    - mysql_data:/var/lib/mysql
+    networks:
+    - backend
+    ports:
+    - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: mypassword
+      MYSQL_USER: root
+      MYSQL_PASSWORD: mypassword
+      MYSQL_DATABASE: django-test
+
+  web: &app
+    image: cumplo/test-web:development
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+    - .:/app
+    ports:
+    - "8000:8000"
+    depends_on:
+    - mysql
+    networks:
+    - backend
+    environment: &app_env
+      DEBUG: 'True'
+      DATABASE_URL: mysql://root:mypassword@mysql:3306/django-test
+      MYSQL_ROOT_PASSWORD: mypassword
+      MYSQL_USER: root
+      MYSQL_PASSWORD: mypassword
+      MYSQL_DATABASE: django-test
