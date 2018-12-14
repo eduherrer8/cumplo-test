@@ -3,3 +3,4 @@ uWSGI
 mysqlclient
 django-crispy-forms
 dj-database-url
+whitenoise
