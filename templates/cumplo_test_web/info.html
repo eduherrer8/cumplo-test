@@ -1,0 +1,34 @@
+{% extends 'cumplo_test_web/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-6">
+        {% for error in form.errors.date_start %}
+          <p class="error-message">{{ error }}</p>
+        {% endfor %}
+        <p>Date Start</p>
+        <input
+          type="date"
+          class="form form-select-full"
+          name="{{ form.date_start.name }}"
+          id="{{ form.date_start.id_for_label }}"
+          {% if form.date_start.value != None %}value="{{ form.date_start.value|stringformat:'s' }}"{% endif %}>
+      </div>
+      <div class="col-6">
+        <p>Date End</p>
+        {% for error in form.errors.date_end %}
+          <p class="error-message">{{ error }}</p>
+        {% endfor %}
+        <input
+          type="date"
+          class="form form-select-full"
+          name="{{ form.date_end.name }}"
+          id="{{ form.date_end.id_for_label }}"
+          {% if form.date_end.value != None %}value="{{ form.date_end.value|stringformat:'s' }}"{% endif %}>
+      </div>
+    </div>
+      <button type="submit" class="btn btn-success">Process</button>
+  </form>
+{% endblock %}

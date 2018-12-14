@@ -1,0 +1,4 @@
+Django
+uWSGI
+mysqlclient
+django-crispy-forms
