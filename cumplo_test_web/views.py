@@ -2,8 +2,7 @@
 from django.views import View
 from django.urls import reverse
 from django.shortcuts import render
-from django.urls import reverse_lazy
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.views.generic.edit import FormView
 
 from cumplo_test_web.forms import RangeDates

@@ -17,3 +17,7 @@ class Series(models.Model):
 
     def __unicode__(self):
         return self.title
+
+
+class ImageHelper(models.Model):
+    image = models.ImageField(upload_to='figures/')

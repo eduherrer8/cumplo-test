@@ -1,8 +1,14 @@
 # -*- coding: utf-8 -*-
 import json
+import numpy as np
+import matplotlib.pyplot as plt
+from io import BytesIO
 
 from django.conf import settings
+from django.core.files import File
 from http.client import HTTPSConnection
+
+from cumplo_test_web.models import ImageHelper
 
 
 class APICalls:
@@ -33,7 +39,6 @@ class AdjustInfo:
         self.data = data
 
     def extra_info(self):
-        aux = []
         for key in self.data["series"]:
             self.add_statistics(key)
         return self.data
@@ -43,3 +48,20 @@ class AdjustInfo:
         serie["Min"] = min(aux)
         serie["Max"] = max(aux)
         serie["average"] = sum(aux)/len(aux)
+        serie["graph"] = self.create_chart(aux, serie['idSerie'])
+
+    def create_chart(self, data, title):
+        objects = [str(x) for x in range(1, len(data)+1)]
+        y_pos = np.arange(len(objects))
+        plt.bar(y_pos, data, tick_label=data, color="grey")
+        plt.xticks(y_pos, objects)
+        plt.title(title)
+
+        blob = BytesIO()
+        plt.savefig(blob, format="png")
+
+        plot_instance = ImageHelper()
+        plot_instance.image.save('serie.jpg', File(blob), save=False)
+        plot_instance.save()
+        plt.clf()
+        return plot_instance.image.url
